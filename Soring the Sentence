@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string sortSentence(string s) {
+        map<int, string> m;
+        string str = "";
+        for (auto& c : s) {
+            if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+                str.push_back(c);
+            if (c >= '0' && c <= '9') {
+                int x = c - '0';
+                m.insert({x, str});
+            }
+            if (c == ' ')
+                str = "";
+        }
+        str = "";
+        for (auto& pr : m) {
+            str += pr.second;
+            str += ' ';
+        }
+        str.erase(str.length() - 1);
+        return str;
+    }
+};
